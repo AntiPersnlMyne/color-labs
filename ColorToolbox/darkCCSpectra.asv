@@ -1,0 +1,9 @@
+function XYZLab = darkCCSpectra(XYZ, XYZn, Lab)
+% Function takes CC Spectra - XYZ, XYZn, Lab - and multiples them by 0.02
+% Multiply all spectra
+XYZ  = XYZ .*0.02;
+XYZn = XYZn.*0.02;
+Lab  = Lab .*0.02;
+
+XYZLAB = [XYZ,]
+end
