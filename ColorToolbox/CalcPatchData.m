@@ -1,3 +1,16 @@
+%% CalcPatchData
+% Calculates structs:
+%    patch1
+%    patch2
+%
+% Saves structs to textfile called "CalcPatchData.txt".
+% This script only needs to be run *ONCE*, the data is written to the
+% .txt file to load in from. Only run the script again if the
+% "CalcPatchData.txt" file is missing.
+% Avoids having to do lengthy calculations every run, as seen in Proj4.
+%
+% GM - 10/27/23
+
 % Import Data and Normalize to 1 - Patch 5.1
 cm_h_offset = 19;
 data=importdata('5.1_real.sp', ' ', cm_h_offset);
@@ -35,3 +48,6 @@ patch1.CalcmatchingXYZ = ref2XYZ(patch1.Imatching, cie.cmf2deg, cie.illD50);
 patch2.CalcrealXYZ = ref2XYZ(patch2.Ireal, cie.cmf2deg, cie.illD50);
 patch2.CalcimagedXYZ = ref2XYZ(patch2.Iimaged, cie.cmf2deg, cie.illD50);
 patch2.CalcmatchingXYZ = ref2XYZ(patch2.Imatching, cie.cmf2deg, cie.illD50);
+
+% Save relavant data to textfile
+save("CalculatedPatchData.mat", "patch2", "patch1")
