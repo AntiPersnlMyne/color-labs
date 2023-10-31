@@ -92,8 +92,8 @@ camRGB.XYZs = camMatrix3x3 * camRGB.RS % [3x24]
 camRGB.XYZs
 
 %% Step 11 - Camera Model Error
-camRGB.XYZ_D50 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD50); % calculating XYZn of D50 
-camRGB.Lab = XYZ2Lab(camRGB.XYZs, camRGB.XYZ_D50); % calulates Lab values of CC  
+camRGB.XYZn.D50 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD50); % calculating XYZn of D50 
+camRGB.Lab = XYZ2Lab(camRGB.XYZs, camRGB.XYZn.D50); % calulates Lab values of CC  
 dEab = deltaEab(MunkiData.Lab,camRGB.Lab) %delta Eab of measured CC Labs and imaged CC Labs
 print_camera_model_error(MunkiData.Lab, camRGB.Lab, dEab);
 
@@ -117,7 +117,7 @@ camRGB.XYZs
 
 %% Step 14 
 
-camRGB.Lab = XYZ2Lab(camRGB.XYZs, camRGB.XYZ_D50); % calulates Lab values of CC  
+camRGB.Lab = XYZ2Lab(camRGB.XYZs, camRGB.XYZn.D50); % calulates Lab values of CC  
 dEab = deltaEab(MunkiData.Lab,camRGB.Lab); %delta Eab of measured CC Labs and imaged CC Labs
 print_extended_camera_model_error(MunkiData.Lab, camRGB.Lab, dEab);
 
@@ -129,13 +129,13 @@ save('cam_model.mat', 'camPolys', 'camMatrix3x11');
 % <include>camRGB2XYZ.m</include>
 
 % Take raw camera RGBs and convert to XYZs
-camRGB.XYZ.XYZ = camRGB2XYZ('cam_model.mat', camRGB.RGB);
-camRGB.XYZ.XYZ
+camRGB.XYZ = camRGB2XYZ('cam_model.mat', camRGB.RGB);
+camRGB.XYZ
 
 %% Step 17 - Visualize the munki-measured XYZs as an sRGB image
-camRGB.XYZ_D65 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD65);
-MunkiData.XYZD65 = catBradford(MunkiData.XYZ,camRGB.XYZ_D50,camRGB.XYZ_D65);
-MunkiData.sRGBs = XYZ2sRGB(MunkiData.XYZD65);
+camRGB.XYZn.D65 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD65);
+MunkiData.XYZD65 = catBradford(MunkiData.XYZ,camRGB.XYZn.D50,camRGB.XYZn.D65);
+MunkiData.sRGBs = XYZ2sRGB(munkiData.XYZD65);
 pix = reshape(camRGB.RS', [6 4 3]);
 pix = uint8(pix*255);
 pix = imrotate(pix, -90);
@@ -145,7 +145,7 @@ image(pix);
 title("Munki XYZs chromatically adapted and visualized in sRGB")
 
 % 
-camRGB.XYZ.D65 = catBradford(MunkiData.XYZ,camRGB.XYZ_D50,camRGB.XYZ_D65);
+camRGB.XYZ.D65 = catBradford(MunkiData.XYZ,camRGB.XYZn.D50,camRGB.XYZn.D65);
 camRGB.XYZ.sRGBs = XYZ2sRGB(camRGB.XYZ.D65);
 pix = reshape(camRGB.RS', [6 4 3]);
 pix = uint8(pix*255);
@@ -153,5 +153,5 @@ pix = imrotate(pix, -90);
 pix = flip(pix, 2);
 figure;
 image(pix);
-title("Estimated XYZs chromatically adapted and visualized in sRGB")
+title("Munki XYZs chromatically adapted and visualized in sRGB")
 
