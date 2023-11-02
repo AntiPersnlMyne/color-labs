@@ -1,7 +1,7 @@
 %% Credits
 % Team #: 1 |
 % Authors: Cooper White & Gian-Mateo Tifone |
-% Date: 11/02/2023
+% Date: 11/xx/2023
 
 %% Step 1 - Initialize
 clear
@@ -39,7 +39,7 @@ xlabel("Munki gray Y's")
 ylabel("Camera gray RGBs")
 colororder(["r", "g", "b"]) % Plot Red, Green, then Blue lines
 xlim([0 .9])
-ylim([.1 1.0])
+ylim([.1 .9])
 
 %% Step 6 - Linearize RGB resposne
 
@@ -112,11 +112,12 @@ Camera.Lab = XYZ2Lab(Camera.XYZ, Camera.XYZn_D50);         % calulates Lab value
 % Worth noting, MATLAB might be insisting here on using its own XYZ2lab instead of ours
 
 % Part b
-dEab = deltaEab(Munki.Lab,Camera.Lab); % dEab measured from CC Labs and imaged CC Labs
+dEab = deltaEab(Munki.Lab,Camera.Lab); % deltaEab of measured CC Labs and imaged CC Labs
+% Bro, how is there a max of 90???
+% Update: Green got imported wrong 
 
 % Part c
-% Print table of L*a*b*'s - Munki and Camera-calculated
-print_camera_model_error(Munki.Lab, Camera.Lab, dEab);  
+print_camera_model_error(Munki.Lab, Camera.Lab, dEab);     Munki and Camera-calculated
 
 %% Step 12 - Improved Camera Model with Non-Linear Relationships 
 
@@ -140,10 +141,8 @@ Camera.XYZ = camMatrix3x11 * RSrgb_extd;
 Camera.XYZ
 
 %% Step 14 - Evaluate accuracy of Camera Model
-% Calulates L*a*b* values of Camera XYZ (under D50)
-Camera.Lab = XYZ2Lab(Camera.XYZ, Camera.XYZn_D50); 
-% delta Eab of measured Munki L*a*b* and Camera L*a*b*
-dEab = deltaEab(Munki.Lab,Camera.Lab);             
+Camera.Lab = XYZ2Lab(Camera.XYZ, Camera.XYZn_D50); % Calulates L*a*b* values of Camera XYZ (under D50)
+dEab = deltaEab(Munki.Lab,Camera.Lab);             % delta Eab of measured Munki L*a*b* and Camera L*a*b*
 
 % Print table
 print_extended_camera_model_error(Munki.Lab, Camera.Lab, dEab); 
