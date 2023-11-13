@@ -1,17 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      -->
-<title>Credits</title>
-<meta name="generator" content="MATLAB 23.2">
-<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-<meta name="DC.date" content="2023-11-02">
-<meta name="DC.source" content="Proj5.m">
-<style type="text/css">
+      --><title>Credits</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-11-03"><meta name="DC.source" content="Proj5.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -72,91 +67,17 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style>
-</head>
-<body>
-<div class="content">
-<h1>Credits</h1>
-<!--introduction-->
-<p>Team #: 1 | Authors: Cooper White &amp; Gian-Mateo Tifone | Date: 11/02/2023</p>
-<!--/introduction-->
-<h2>Contents</h2>
-<div>
-<ul>
-<li>
-<a href="#1">Step 1 - Initialize</a>
-</li>
-<li>
-<a href="#2">Step 2 - Import CC</a>
-</li>
-<li>
-<a href="#3">Step 3 - Filter out Camera's gray and flip</a>
-</li>
-<li>
-<a href="#4">Step 4 - Import Munki LAB and XYZ</a>
-</li>
-<li>
-<a href="#5">Step 5 - Plot Grayscale Y vs RGB</a>
-</li>
-<li>
-<a href="#6">Step 6 - Linearize RGB resposne</a>
-</li>
-<li>
-<a href="#7">Step 7 - Plot RS Scalars vs RGBs</a>
-</li>
-<li>
-<a href="#8">Step 8 - Plot the Color Checker Pre/Post Linearized</a>
-</li>
-<li>
-<a href="#9">Step 9 - Estimate XYZ from RSs</a>
-</li>
-<li>
-<a href="#10">Step 10 - Estimate XYZ of CC</a>
-</li>
-<li>
-<a href="#11">Step 11 - Create a camera model + analyze error</a>
-</li>
-<li>
-<a href="#12">Step 12 - Improved Camera Model with Non-Linear Relationships</a>
-</li>
-<li>
-<a href="#13">Step 13 - estimate XYZs from RGB and RS</a>
-</li>
-<li>
-<a href="#14">Step 14 - Evaluate accuracy of Camera Model</a>
-</li>
-<li>
-<a href="#15">Step 15 - Save Extended Camera Model</a>
-</li>
-<li>
-<a href="#16">Step 16 - Camera XYZ from improved model</a>
-</li>
-<li>
-<a href="#17">Step 17 - Visualize the munki-measured XYZs as an sRGB image</a>
-</li>
-</ul>
-</div>
-<h2 id="1">Step 1 - Initialize</h2>
-<pre class="codeinput">clear
+  </style></head><body><div class="content"><h1>Credits</h1><!--introduction--><p>Team #: 1 | Authors: Cooper White &amp; Gian-Mateo Tifone | Date: 11/02/2023</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Step 1 - Initialize</a></li><li><a href="#2">Step 2 - Import CC</a></li><li><a href="#3">Step 3 - Filter out Camera's gray and flip</a></li><li><a href="#4">Step 4 - Import Munki LAB and XYZ</a></li><li><a href="#5">Step 5 - Plot Grayscale Y vs RGB</a></li><li><a href="#6">Step 6 - Linearize RGB resposne</a></li><li><a href="#7">Step 7 - Plot RS Scalars vs RGBs</a></li><li><a href="#8">Step 8 - Plot the Color Checker Pre/Post Linearized</a></li><li><a href="#9">Step 9 - Estimate XYZ from RSs</a></li><li><a href="#10">Step 10 - Estimate XYZ of CC</a></li><li><a href="#11">Step 11 - Create a camera model + analyze error</a></li><li><a href="#12">Step 12 - Improved Camera Model with Non-Linear Relationships</a></li><li><a href="#13">Step 13 - estimate XYZs from RGB and RS</a></li><li><a href="#14">Step 14 - Evaluate accuracy of Camera Model</a></li><li><a href="#15">Step 15 - Save Extended Camera Model</a></li><li><a href="#16">Step 16 - Camera XYZ from improved model</a></li><li><a href="#17">Step 17 - Visualize the munki-measured XYZs as an sRGB image</a></li><li><a href="#18">Feedback</a></li></ul></div><h2 id="1">Step 1 - Initialize</h2><pre class="codeinput">clear
 disp(<span class="string">"Hello Jim :D"</span>, newline)
-</pre>
-<pre class="codeoutput">Hello Jim :D
-</pre>
-<h2 id="2">Step 2 - Import CC</h2>
-<pre class="codeinput">cie = loadCIEdata;
+</pre><pre class="codeoutput">Hello Jim :D
+</pre><h2 id="2">Step 2 - Import CC</h2><pre class="codeinput">cie = loadCIEdata;
 Camera.RGBNorm = importdata(<span class="string">'CameraRGB.txt'</span>,<span class="string">' '</span>); <span class="comment">% Read in RGBs of CC image [3x24] [R;G;B]</span>
 <span class="comment">% RGB's were calculated as averaged over a span of 255, meaning they're imported</span>
 <span class="comment">% normalized to 255</span>
-</pre>
-<h2 id="3">Step 3 - Filter out Camera's gray and flip</h2>
-<p>Filter out grays</p>
-<pre class="codeinput">Camera.gray = Camera.RGBNorm(:, 19:24); <span class="comment">% 19-24th patches</span>
+</pre><h2 id="3">Step 3 - Filter out Camera's gray and flip</h2><p>Filter out grays</p><pre class="codeinput">Camera.gray = Camera.RGBNorm(:, 19:24); <span class="comment">% 19-24th patches</span>
 <span class="comment">% Flip grays</span>
 Camera.gray = flip(Camera.gray, 2); <span class="comment">% Black -&gt; White</span>
-</pre>
-<h2 id="4">Step 4 - Import Munki LAB and XYZ</h2>
-<pre class="codeinput">
-<span class="comment">% Part a</span>
+</pre><h2 id="4">Step 4 - Import Munki LAB and XYZ</h2><pre class="codeinput"><span class="comment">% Part a</span>
 Munki.data = importdata(<span class="string">'munki_CC_XYZs_Labs.txt'</span>,<span class="string">'\t'</span>); <span class="comment">% Read in Munki XYZ and LAB  [24x7]</span>
 Munki.XYZ = Munki.data(:, 2:4)';                        <span class="comment">% Munki XYZ [3x24]</span>
 Munki.Lab = Munki.data(:, 5:7)';                        <span class="comment">% Munki LAB [3x24]</span>
@@ -165,9 +86,7 @@ Munki.Lab = Munki.data(:, 5:7)';                        <span class="comment">% 
 Munki.grayY = Munki.XYZ(2,19:24);           <span class="comment">% Only Gray Y's of Munki XYZ [1x6]</span>
 Munki.grayNormY = Munki.grayY / 100;        <span class="comment">% Normalize Y's</span>
 Munki.grayNormY = flip(Munki.grayNormY, 2); <span class="comment">% Flip Y's</span>
-</pre>
-<h2 id="5">Step 5 - Plot Grayscale Y vs RGB</h2>
-<pre class="codeinput">figure
+</pre><h2 id="5">Step 5 - Plot Grayscale Y vs RGB</h2><pre class="codeinput">figure
 plot (Munki.grayNormY, Camera.gray, <span class="string">'LineWidth'</span>, 1);
 title(<span class="string">"Original grayscale Y to RGB relationship"</span>)
 xlabel(<span class="string">"Munki gray Y's"</span>)
@@ -175,10 +94,7 @@ ylabel(<span class="string">"Camera gray RGBs"</span>)
 colororder([<span class="string">"r"</span>, <span class="string">"g"</span>, <span class="string">"b"</span>]) <span class="comment">% Plot Red, Green, then Blue lines</span>
 xlim([0 .9])
 ylim([.1 1.0])
-</pre>
-<img vspace="5" hspace="5" src="Proj5_01.png" alt=""> <h2 id="6">Step 6 - Linearize RGB resposne</h2>
-<pre class="codeinput">
-<span class="comment">% Part a</span>
+</pre><img vspace="5" hspace="5" src="Proj5_01.png" alt=""> <h2 id="6">Step 6 - Linearize RGB resposne</h2><pre class="codeinput"><span class="comment">% Part a</span>
 r=1;g=2;b=3;
 
 <span class="comment">% Fits low-order (x^3) polynomial functions between normalized grey patch's RGBs and</span>
@@ -202,19 +118,14 @@ Camera.RS(b,:) = polyval(CameraPolys(b,:), Camera.RGBNorm(b, :)); <span class="c
 <span class="comment">% Fix out of range values</span>
 Camera.RS(Camera.RS&lt;0) = 0;
 Camera.RS(Camera.RS&gt;1) = 1;
-</pre>
-<h2 id="7">Step 7 - Plot RS Scalars vs RGBs</h2>
-<pre class="codeinput">figure
+</pre><h2 id="7">Step 7 - Plot RS Scalars vs RGBs</h2><pre class="codeinput">figure
 <span class="comment">%                      Only gray RS, flipped B-&gt;W</span>
 plot (Munki.grayNormY, flip(Camera.RS(:, 19:24), 2), <span class="string">'LineWidth'</span>, 1);
 title(<span class="string">"Linearized Grayscale Y to RGB Relationship"</span>)
 xlabel(<span class="string">"Munki Gray Y's"</span>)
 ylabel(<span class="string">"Linearized Camera Gray RGBs (RSs)"</span>)
 colororder([<span class="string">"r"</span>, <span class="string">"g"</span>, <span class="string">"b"</span>]) <span class="comment">% Plot Red, Green, then Blue lines</span>
-</pre>
-<img vspace="5" hspace="5" src="Proj5_02.png" alt=""> <h2 id="8">Step 8 - Plot the Color Checker Pre/Post Linearized</h2>
-<pre class="codeinput">
-<span class="comment">% Original camera RGBs</span>
+</pre><img vspace="5" hspace="5" src="Proj5_02.png" alt=""> <img vspace="5" hspace="5" src="Proj5_03.png" alt=""> <h2 id="8">Step 8 - Plot the Color Checker Pre/Post Linearized</h2><pre class="codeinput"><span class="comment">% Original camera RGBs</span>
 pix = reshape(Camera.RGBNorm', [6 4 3]);
 pix = uint8(pix*255);
 pix = imrotate(pix, -90);
@@ -231,23 +142,17 @@ pix = flip(pix, 2);
 figure;
 image(pix);
 title(<span class="string">"Linearized camera patch RGBs"</span>)
-</pre>
-<img vspace="5" hspace="5" src="Proj5_03.png" alt=""> <img vspace="5" hspace="5" src="Proj5_04.png" alt=""> <h2 id="9">Step 9 - Estimate XYZ from RSs</h2>
-<pre class="codeinput">camMatrix3x3 = Munki.XYZ * pinv(Camera.RS)
-</pre>
-<pre class="codeoutput">
+</pre><img vspace="5" hspace="5" src="Proj5_04.png" alt=""> <img vspace="5" hspace="5" src="Proj5_05.png" alt=""> <h2 id="9">Step 9 - Estimate XYZ from RSs</h2><pre class="codeinput">camMatrix3x3 = Munki.XYZ * pinv(Camera.RS)
+</pre><pre class="codeoutput">
 camMatrix3x3 =
 
    31.1586   38.6034   18.4415
    15.5795   62.1670   14.6513
    -0.1762   13.4580   65.1305
 
-</pre>
-<h2 id="10">Step 10 - Estimate XYZ of CC</h2>
-<pre class="codeinput">Camera.XYZ = camMatrix3x3 * Camera.RS; <span class="comment">% [3x24]</span>
+</pre><h2 id="10">Step 10 - Estimate XYZ of CC</h2><pre class="codeinput">Camera.XYZ = camMatrix3x3 * Camera.RS; <span class="comment">% [3x24]</span>
 Camera.XYZ
-</pre>
-<pre class="codeoutput">
+</pre><pre class="codeoutput">
 ans =
 
   Columns 1 through 7
@@ -274,10 +179,7 @@ ans =
    16.8379    9.2196    2.3250
    14.2088    7.8855    1.9450
 
-</pre>
-<h2 id="11">Step 11 - Create a camera model + analyze error</h2>
-<pre class="codeinput">
-<span class="comment">% Part a</span>
+</pre><h2 id="11">Step 11 - Create a camera model + analyze error</h2><pre class="codeinput"><span class="comment">% Part a</span>
 Camera.XYZn_D50 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD50); <span class="comment">% calculating XYZn of D50</span>
 Camera.Lab = XYZ2Lab(Camera.XYZ, Camera.XYZn_D50);         <span class="comment">% calulates Lab values of CC</span>
 <span class="comment">% Worth noting, MATLAB might be insisting here on using its own XYZ2lab instead of ours</span>
@@ -288,8 +190,7 @@ dEab = deltaEab(Munki.Lab,Camera.Lab); <span class="comment">% dEab measured fro
 <span class="comment">% Part c</span>
 <span class="comment">% Print table of L*a*b*'s - Munki and Camera-calculated</span>
 print_camera_model_error(Munki.Lab, Camera.Lab, dEab);
-</pre>
-<pre class="codeoutput">
+</pre><pre class="codeoutput">
 
 Camera model color error
 camera-&gt;camera_RGBs-&gt;camera_model-&gt;estimated_XYZs
@@ -325,10 +226,7 @@ patch #	     L        a        b        L        a        b       dEab
 							min      1.3261
 							max     21.1543
 							mean     7.4298
-</pre>
-<h2 id="12">Step 12 - Improved Camera Model with Non-Linear Relationships</h2>
-<pre class="codeinput">
-<span class="comment">% Part a</span>
+</pre><h2 id="12">Step 12 - Improved Camera Model with Non-Linear Relationships</h2><pre class="codeinput"><span class="comment">% Part a</span>
 RSrgb = Camera.RS;
 RS_r = RSrgb(1,:);
 RS_g = RSrgb(2,:);
@@ -342,8 +240,7 @@ camMatrix3x11 = Munki.XYZ * pinv(RSrgb_extd);
 
 <span class="comment">% Print result</span>
 camMatrix3x11
-</pre>
-<pre class="codeoutput">
+</pre><pre class="codeoutput">
 camMatrix3x11 =
 
   Columns 1 through 7
@@ -358,12 +255,9 @@ camMatrix3x11 =
   -16.9800  -33.3667   -2.2305    0.6732
    -5.1400   -7.3996  -29.0141   -1.0480
 
-</pre>
-<h2 id="13">Step 13 - estimate XYZs from RGB and RS</h2>
-<pre class="codeinput">Camera.XYZ = camMatrix3x11 * RSrgb_extd;
+</pre><h2 id="13">Step 13 - estimate XYZs from RGB and RS</h2><pre class="codeinput">Camera.XYZ = camMatrix3x11 * RSrgb_extd;
 Camera.XYZ
-</pre>
-<pre class="codeoutput">
+</pre><pre class="codeoutput">
 ans =
 
   Columns 1 through 7
@@ -390,17 +284,13 @@ ans =
    17.4932    9.8716    2.9980
    14.9616    8.1994    1.3313
 
-</pre>
-<h2 id="14">Step 14 - Evaluate accuracy of Camera Model</h2>
-<p>Calulates L*a*b* values of Camera XYZ (under D50)</p>
-<pre class="codeinput">Camera.Lab = XYZ2Lab(Camera.XYZ, Camera.XYZn_D50);
+</pre><h2 id="14">Step 14 - Evaluate accuracy of Camera Model</h2><p>Calulates L*a*b* values of Camera XYZ (under D50)</p><pre class="codeinput">Camera.Lab = XYZ2Lab(Camera.XYZ, Camera.XYZn_D50);
 <span class="comment">% delta Eab of measured Munki L*a*b* and Camera L*a*b*</span>
 dEab = deltaEab(Munki.Lab,Camera.Lab);
 
 <span class="comment">% Print table</span>
 print_extended_camera_model_error(Munki.Lab, Camera.Lab, dEab);
-</pre>
-<pre class="codeoutput">
+</pre><pre class="codeoutput">
 
 Extended camera model color error
 camera-&gt;camera_RGBs-&gt;extended_camera_model-&gt;estimated_XYZs
@@ -436,12 +326,8 @@ patch #	     L        a        b        L        a        b       dEab
 							min      0.3462
 							max     12.4763
 							mean     4.6492
-</pre>
-<h2 id="15">Step 15 - Save Extended Camera Model</h2>
-<pre class="codeinput">save(<span class="string">'cam_model.mat'</span>, <span class="string">'CameraPolys'</span>, <span class="string">'camMatrix3x11'</span>);
-</pre>
-<h2 id="16">Step 16 - Camera XYZ from improved model</h2>
-<pre class="language-matlab">
+</pre><h2 id="15">Step 15 - Save Extended Camera Model</h2><pre class="codeinput">save(<span class="string">'cam_model.mat'</span>, <span class="string">'CameraPolys'</span>, <span class="string">'camMatrix3x11'</span>);
+</pre><h2 id="16">Step 16 - Camera XYZ from improved model</h2><pre class="language-matlab">
 <span class="keyword">function</span> camXYZ = camRGB2XYZ(camModel, camRGB)
 <span class="comment">% Takes Camera Model and Camera RGBs and converts them to XYZ values</span>
 <span class="comment">%  </span>
@@ -479,13 +365,10 @@ RSrgb_extd = [RSrgb; RS_r.*RS_g; RS_r.*RS_b; RS_g.*RS_b; RS_r.*RS_g.*RS_b;
 camXYZ = camMatrix3x11 * RSrgb_extd;
 <span class="keyword">end</span>
 
-</pre>
-<pre class="codeinput">
-<span class="comment">% Take raw camera RGBs and convert to XYZs using a camera model</span>
+</pre><pre class="codeinput"><span class="comment">% Take raw camera RGBs and convert to XYZs using a camera model</span>
 Camera.XYZ = camRGB2XYZ(<span class="string">'cam_model.mat'</span>, Camera.RGBNorm);
 Camera.XYZ
-</pre>
-<pre class="codeoutput">
+</pre><pre class="codeoutput">
 ans =
 
   Columns 1 through 7
@@ -512,9 +395,7 @@ ans =
    17.4932    9.8716    2.9980
    14.9616    8.1994    1.3313
 
-</pre>
-<h2 id="17">Step 17 - Visualize the munki-measured XYZs as an sRGB image</h2>
-<pre class="codeinput">Camera.XYZn_D65 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD65);
+</pre><h2 id="17">Step 17 - Visualize the munki-measured XYZs as an sRGB image</h2><pre class="codeinput">Camera.XYZn_D65 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD65);
 
 <span class="comment">% Jim Code ~</span>
 <span class="comment">% Visualize the Munki XYZs in sRGB color space</span>
@@ -543,14 +424,7 @@ pix = flip(pix, 2);
 figure;
 image(pix);
 title(<span class="string">"Estimated XYZs chromatically adapted and visualized in sRGB"</span>)
-</pre>
-<img vspace="5" hspace="5" src="Proj5_05.png" alt=""> <img vspace="5" hspace="5" src="Proj5_06.png" alt=""> <p class="footer">
-<br>
-<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
-<br>
-</p>
-</div>
-<!--
+</pre><img vspace="5" hspace="5" src="Proj5_06.png" alt=""> <img vspace="5" hspace="5" src="Proj5_07.png" alt=""> <img vspace="5" hspace="5" src="Proj5_08.png" alt=""> <h2 id="18">Feedback</h2><p>Cooper &amp; Gian-Mateo coded the lab, the work was even distributed and we debugged together :) The only major problem we ran into was our original jpg file having some discoloration. So, we retook our pictures. Parts of this lab that were important to us included the ability to easily compare the colors that we had generated, also recognizing that we can feed functions .mat files was cool.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Credits
 % Team #: 1 |
@@ -744,8 +618,14 @@ figure;
 image(pix);
 title("Estimated XYZs chromatically adapted and visualized in sRGB")
 
-
+%% Feedback 
+% 
+% Cooper & Gian-Mateo coded the lab, the work was even distributed and we
+% debugged together :) 
+% The only major problem we ran into was our original jpg file having some
+% discoloration. So, we retook our pictures. 
+% Parts of this lab that were important to us included the ability to
+% easily compare the colors that we had generated, also recognizing that we
+% can feed functions .mat files was cool. 
 ##### SOURCE END #####
--->
-</body>
-</html>
+--></body></html>

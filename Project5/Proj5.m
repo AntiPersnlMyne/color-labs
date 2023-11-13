@@ -190,3 +190,12 @@ figure;
 image(pix);
 title("Estimated XYZs chromatically adapted and visualized in sRGB")
 
+%% Feedback 
+% 
+% Cooper & Gian-Mateo coded the lab, the work was even distributed and we
+% debugged together :) 
+% The only major problem we ran into was our original jpg file having some
+% discoloration. So, we retook our pictures. 
+% Parts of this lab that were important to us included the ability to
+% easily compare the colors that we had generated, also recognizing that we
+% can feed functions .mat files was cool. 
