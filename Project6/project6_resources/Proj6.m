@@ -79,9 +79,9 @@ BlueRampRS_B  = BlueRampRS(3,:);
 ramp_DCs = round(linspace(0,255,11));
 
 % Create LUT for Red/Green/Blue
-RedLUT_fwd   = interp1(ramp_DCs, RedRampRS_R, 0:1:255, 'pchip');
-GreenLUT_fwd = interp1(ramp_DCs, GreenRampRS_G, 0:1:255, 'pchip');
-BlueLUT_fwd  = interp1(ramp_DCs, BlueRampRS_B, 0:1:255, 'pchip');
+RedLUT_fwd   = interp1(ramp_DCs, RedRampRS_R, 0:1:255, 'pchip');   % Red LUT forward
+GreenLUT_fwd = interp1(ramp_DCs, GreenRampRS_G, 0:1:255, 'pchip'); % Green LUT forward
+BlueLUT_fwd  = interp1(ramp_DCs, BlueRampRS_B, 0:1:255, 'pchip');  % Blue LUT forward
 
 % Plot LUT
 figure
@@ -96,7 +96,74 @@ title("Forward Model LUTs")
 ylim([0 1])
 xlim([0 255])
 
+%% Step 6 - Reverse Model
+m_rev = m_fwd_inv;
 
+%% Step 7 - Reverse LUT
+RedLUT_rev   = uint8(round(interp1(RedLUT_fwd, 0:255, linspace(0, max(RedLUT_fwd), 1024), 'pchip', 0)));     % Red LUT reverse
+GreenLUT_rev = uint8(round(interp1(GreenLUT_fwd, 0:255, linspace(0, max(GreenLUT_fwd), 1024), 'pchip', 0))); % Green LUT reverse
+BlueLUT_rev  = uint8(round(interp1(BlueLUT_fwd, 0:255, linspace(0, max(BlueLUT_fwd), 1024), 'pchip', 0)));   % Blue LUT reverse
+
+% Plot
+figure
+hold on
+plot(0:1023, RedLUT_rev,  'Color', [1, 0, 0])
+plot(0:1023, GreenLUT_rev,'Color', [0, 1, 0])
+plot(0:1023, BlueLUT_rev, 'Color', [0, 0, 1])
+
+xlabel("Digital Counts RGB 0-255")
+ylabel("Radiometrix Scalars RGB 0-1")
+title("Forward Model LUTs")
+ylim([0 255])
+xlim([0 1023])
+
+%% Step 8 - Final Display Model
+XYZw_display = XYZw; % White of dispaly
+XYZk_display = XYZk; % Black of display
+M_Display = m_rev;   % Reverse matrix of dispaly
+RLUT_display = RedLUT_rev;   % Red LUT reverse model
+GLUT_display = GreenLUT_rev; % Green LUT reverse model
+BLUT_display = BlueLUT_rev;  % Blue LUT reverse model
+
+% Saves the B&W, and Reverse matrix of the display. Saves the R,G,B LUTs of
+% the reverse model
+save ('display_model.mat', 'XYZw_display', 'XYZk_display', 'M_Display', ...
+      'RLUT_display', 'GLUT_display', 'BLUT_display');
+
+%% Step 9 - Render RGB image from XYZ
+load('loadMunkiData.mat')
+
+% Step c
+catXYZ = catBradford(Munki.XYZ, XYZw_display, XYZ_D50);
+
+% Step d
+catXYZ = catXYZ - XYZk_display;
+
+% Step e
+munki_CC_RSs = M_Display * catXYZ;
+
+% Step f
+munki_CC_RSs = munki_CC_RSs/100;
+
+% Step g
+munki_CC_RSs(0>munki_CC_RSs) = 0;
+munki_CC_RSs(1>munki_CC_RSs) = 1;
+
+% Step h
+munki_CC_RSs = uint8(munki_CC_RSs*1023 + 1);
+
+% Step i
+munki_CC_DCs(1,:) = RedLUT_rev(munki_CC_RSs(1,:));
+munki_CC_DCs(2,:) = GreenLUT_rev(munki_CC_RSs(2,:));
+munki_CC_DCs(3,:) = BlueLUT_rev(munki_CC_RSs(3,:));
+
+% Step j - Visualize Chart Patches
+pix = uint8(reshape(munki_CC_DCs', [6 4 3]));
+pix = fliplr(imrotate(pix, -90));
+figure
+image(pix);
+set(gca, 'FontSize', 12);
+title("colorchecker rendered from measured XYZs using the display model")
 
 
 
