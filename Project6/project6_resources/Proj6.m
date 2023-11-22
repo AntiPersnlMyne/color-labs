@@ -44,10 +44,13 @@ m_fwd = m_fwd / XYZw(2, 1);
 m_fwd
 
 %% Step 5 - Derive the LUTs
-RedRamp = ramp_R_XYZs - XYZk;   % XYZ of Red minus black 
-GreenRamp = ramp_G_XYZs - XYZk; % XYZ of Green minus black 
-BlueRamp = ramp_B_XYZs - XYZk;  % XYZ of BLue minus black 
 
+% Step a/b
+RedRamp =   ramp_R_XYZs - XYZk; % XYZ of Red minus black 
+GreenRamp = ramp_G_XYZs - XYZk; % XYZ of Green minus black 
+BlueRamp =  ramp_B_XYZs - XYZk; % XYZ of BLue minus black 
+
+% Step c
 RedRamp   = RedRamp   / XYZw(2, 1); % Divide XYZ by (Y) of white
 GreenRamp = GreenRamp / XYZw(2, 1); % Divide XYZ by (Y) of white
 BlueRamp  = BlueRamp  / XYZw(2, 1); % Divide XYZ by (Y) of white
@@ -60,21 +63,34 @@ GreenRamp(GreenRamp>1) = 1;
 BlueRamp(BlueRamp<0)   = 0;
 BlueRamp(BlueRamp>1)   = 1;
 
+% Step d
 % Estiamte Radiometric Scalars
 m_fwd_inv = pinv(m_fwd(1:3,1:3)); % Calculate inverse matrix of 3x3 forward matrix
 
+% The RS means they're converted into RGB, meaning R;G;B [3x11] for 11
+% patches
 RedRampRS   = m_fwd_inv * RedRamp;   % Multiply XYZ by inverse forward matrix
 GreenRampRS = m_fwd_inv * GreenRamp; % 
 BlueRampRS  = m_fwd_inv * BlueRamp;  % 
 
+% Step e
 % Extract the Red/Green/Blue channels from the RSs of each ramp
 % I.e. Extract Red RS from RedRamp
 %      Extract Green RS from GreenRamp
 %      Extract Blue RS from BlueRamp
-RedRampRS_R   = RedRampRS(1,:);
-GreenRampRS_G = GreenRampRS(2,:);
-BlueRampRS_B  = BlueRampRS(3,:);
+RedRampRS_R = RedRampRS(1,:);     % Red channel of red
+%RedRampRS_G = RedRampRS(2,:);
+%RedRampRS_B = RedRampRS(3,:);
 
+%GreenRampRS_R = GreenRampRS(1,:);
+GreenRampRS_G = GreenRampRS(2,:); % Green channel of green
+%GreenRampRS_B = GreenRampRS(3,:);
+
+%BlueRampRS_R = BlueRampRS(1,:);
+%BlueRampRS_G = BlueRampRS(2,:);
+BlueRampRS_B = BlueRampRS(3,:);   % Blue channel of blue
+
+% Step f
 % Interpolate channels from 0-255 using 'pchip'
 ramp_DCs = round(linspace(0,255,11));
 
@@ -97,7 +113,7 @@ ylim([0 1])
 xlim([0 255])
 
 %% Step 6 - Reverse Model
-m_rev = m_fwd_inv;
+m_rev = m_fwd_inv
 
 %% Step 7 - Reverse LUT
 RedLUT_rev   = uint8(round(interp1(RedLUT_fwd, 0:255, linspace(0, max(RedLUT_fwd), 1024), 'pchip', 0)));     % Red LUT reverse
@@ -111,9 +127,9 @@ plot(0:1023, RedLUT_rev,  'Color', [1, 0, 0])
 plot(0:1023, GreenLUT_rev,'Color', [0, 1, 0])
 plot(0:1023, BlueLUT_rev, 'Color', [0, 0, 1])
 
-xlabel("Digital Counts RGB 0-255")
-ylabel("Radiometrix Scalars RGB 0-1")
-title("Forward Model LUTs")
+ylabel("Digital Counts RGB 0-255")
+xlabel("Scaled/quantized ratiometric scalars RGB 0-1023")
+title("Reverse Model LUTs")
 ylim([0 255])
 xlim([0 1023])
 
@@ -131,39 +147,56 @@ save ('display_model.mat', 'XYZw_display', 'XYZk_display', 'M_Display', ...
       'RLUT_display', 'GLUT_display', 'BLUT_display');
 
 %% Step 9 - Render RGB image from XYZ
-load('loadMunkiData.mat')
 
-% Step c
-catXYZ = catBradford(Munki.XYZ, XYZw_display, XYZ_D50);
+% Step a
+XYZ_D50;
 
-% Step d
+% Step b - Load in Munki XYZ + Lab
+load("loadMunkiData.mat")
+
+% Step c - Adapt XYZ under D50 -> XYZ under Display's whitepoint
+catXYZ = catBradford(Munki.XYZ, XYZ_D50, XYZw_display);
+
+% Step d - Subtract the black level
 catXYZ = catXYZ - XYZk_display;
 
-% Step e
-munki_CC_RSs = M_Display * catXYZ;
+% Step e - Multiply XYZ by the Display to produce RS
+%               [3x3]     [3x24]    
+munki_CC_RS = M_Display * catXYZ;
 
 % Step f
-munki_CC_RSs = munki_CC_RSs/100;
+munki_CC_RS = munki_CC_RS/100;
 
 % Step g
-munki_CC_RSs(0>munki_CC_RSs) = 0;
-munki_CC_RSs(1>munki_CC_RSs) = 1;
+munki_CC_RS(munki_CC_RS<0) = 0;
+munki_CC_RS(1<munki_CC_RS) = 1;
 
 % Step h
-munki_CC_RSs = uint8(munki_CC_RSs*1023 + 1);
+munki_CC_RS = round(munki_CC_RS*1023 + 1);
 
 % Step i
-munki_CC_DCs(1,:) = RedLUT_rev(munki_CC_RSs(1,:));
-munki_CC_DCs(2,:) = GreenLUT_rev(munki_CC_RSs(2,:));
-munki_CC_DCs(3,:) = BlueLUT_rev(munki_CC_RSs(3,:));
+munki_CC_DC(1,:) = RedLUT_rev(munki_CC_RS(1,:));
+munki_CC_DC(2,:) = GreenLUT_rev(munki_CC_RS(2,:));
+munki_CC_DC(3,:) = BlueLUT_rev(munki_CC_RS(3,:));
 
 % Step j - Visualize Chart Patches
-pix = uint8(reshape(munki_CC_DCs', [6 4 3]));
+pix = uint8(reshape(munki_CC_DC', [6 4 3]));
 pix = fliplr(imrotate(pix, -90));
 figure
 image(pix);
 set(gca, 'FontSize', 12);
 title("colorchecker rendered from measured XYZs using the display model")
+
+%% Step 10 - Evaluate Color Accuracy of Display Model
+
+% Step a - Double cast and rescale to [0-100] range
+munki_CC_DC = double(munki_CC_DC) * (100/255);%Normalize to 1, then x100.
+
+% Step b - Matrix table4ti1
+
+
+
+
 
 
 
