@@ -199,6 +199,13 @@ table4ti1(1:24, 2:4) = munki_CC_DC';
 table4ti1(25:27, 2:4) = 0;
 table4ti1(28:30, 2:4) = 100;
 
+% Step c - Write .ti1 file
+write_ti1_file(table4ti1, 'disp_model_test.ti1');
+
+
+% Step d 
+
+
 
 
 
