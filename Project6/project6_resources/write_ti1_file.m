@@ -6,7 +6,7 @@ fid = fopen(filename, 'w+');
 % Create Document
 fprintf(fid, '%s\n\n', "CTI1")
 
-fprintf(fid, '%s\n\n', "COLOR_REP")
+fprintf(fid, '%s\n\n', 'COLOR_REP "RGB"')
 
 fprintf(fid, '%s\n', "NUMBER_OF_FIELDS 4")
 fprintf(fid, '%s\n', "BEGIN_DATA_FORMAT")
