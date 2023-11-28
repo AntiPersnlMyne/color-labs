@@ -190,16 +190,10 @@ title("colorchecker rendered from measured XYZs using the display model")
 %% Step 10 - Evaluate Color Accuracy of Display Model
 
 % Step a - Double cast and rescale to [0-100] range
-munki_CC_DC = uint8( double(munki_CC_DC) * (100/255) );%Normalize to 1, then x100.
+munki_CC_DC = double(munki_CC_DC) * (100/255);%Normalize to 1, then x100.
 
 % Step b - Matrix table4ti1
-table4ti1 = ones(30, 4);
-table4ti1(:, 1) = 1:30;
-table4ti1(1:24, 2:4) = munki_CC_DC';
-table4ti1(25:27, 2:4) = 0;
-table4ti1(28:30, 2:4) = 100;
-
-
+table4ti1 = 
 
 
 
