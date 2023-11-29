@@ -1,0 +1,748 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Credits</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2023-11-28">
+<meta name="DC.source" content="Proj6.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Credits</h1>
+<!--introduction-->
+<p>Team #: 1 | Authors: Cooper White &amp; Gian-Mateo Tifone | Date: 11/28/2023</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Step 1/2 - initilization</a>
+</li>
+<li>
+<a href="#2">Step 3</a>
+</li>
+<li>
+<a href="#3">Step 4 - Forward Matrix</a>
+</li>
+<li>
+<a href="#4">Step 5 - Derive the LUTs</a>
+</li>
+<li>
+<a href="#5">Step 6 - Reverse Model</a>
+</li>
+<li>
+<a href="#6">Step 7 - Reverse LUT</a>
+</li>
+<li>
+<a href="#7">Step 8 - Final Display Model</a>
+</li>
+<li>
+<a href="#8">Step 9 - Render RGB image from XYZ</a>
+</li>
+<li>
+<a href="#9">Step 10 - Evaluate Color Accuracy of Display Model</a>
+</li>
+<li>
+<a href="#10">Step 11 - Create Display RGB Function</a>
+</li>
+<li>
+<a href="#11">Display XYZ2RGB function</a>
+</li>
+<li>
+<a href="#12">Flex write_ti1_file.m</a>
+</li>
+<li>
+<a href="#13">Step 12 - Feedback</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Step 1/2 - initilization</h2>
+<pre class="codeinput">clear;
+
+cie = loadCIEdata;
+XYZ_D50 = ref2XYZ(cie.PRD, cie.cmf2deg, cie.illD50);
+XYZ_D65 = ref2XYZ(cie.PRD, cie.cmf2deg, cie.illD65);
+</pre>
+<h2 id="2">Step 3</h2>
+<pre class="codeinput">load_ramps_data;
+</pre>
+<h2 id="3">Step 4 - Forward Matrix</h2>
+<pre class="codeinput">Red_max.X = max(ramp_R_XYZs(1, :)); <span class="comment">%X_r,max</span>
+Red_max.Y = max(ramp_R_XYZs(2, :)); <span class="comment">%Y_r,max</span>
+Red_max.Z = max(ramp_R_XYZs(3, :)); <span class="comment">%Z_r,max</span>
+
+Green_max.X = max(ramp_G_XYZs(1, :)); <span class="comment">%X_g,max</span>
+Green_max.Y = max(ramp_G_XYZs(2, :)); <span class="comment">%Y_g,max</span>
+Green_max.Z = max(ramp_G_XYZs(3, :)); <span class="comment">%Z_g,max</span>
+
+Blue_max.X = max(ramp_B_XYZs(1, :)); <span class="comment">%X_g,max</span>
+Blue_max.Y = max(ramp_B_XYZs(2, :)); <span class="comment">%Y_g,max</span>
+Blue_max.Z = max(ramp_B_XYZs(3, :)); <span class="comment">%Z_g,max</span>
+
+<span class="comment">% Create matrix of max</span>
+m_fwd = [Red_max.X, Green_max.X, Blue_max.X ;
+         Red_max.Y, Green_max.Y, Blue_max.Y ;
+         Red_max.Z, Green_max.Z, Blue_max.Z];
+
+<span class="comment">% Subtract the XYZ of display (XYZk)</span>
+m_fwd = m_fwd-XYZk;
+
+<span class="comment">% Add XYZk (black) collumn</span>
+m_fwd = cat(2, m_fwd, XYZk);
+
+<span class="comment">% Divide the XYZw value (Y)</span>
+m_fwd = m_fwd / XYZw(2, 1);
+
+<span class="comment">% Display Matrix</span>
+m_fwd
+</pre>
+<pre class="codeoutput">
+m_fwd =
+
+    0.3736    0.3652    0.2095    0.0008
+    0.2248    0.6260    0.1452    0.0008
+    0.0518    0.1140    1.0149    0.0014
+
+</pre>
+<h2 id="4">Step 5 - Derive the LUTs</h2>
+<pre class="codeinput">
+<span class="comment">% Step a/b</span>
+RedRamp =   ramp_R_XYZs - XYZk; <span class="comment">% XYZ of Red minus black</span>
+GreenRamp = ramp_G_XYZs - XYZk; <span class="comment">% XYZ of Green minus black</span>
+BlueRamp =  ramp_B_XYZs - XYZk; <span class="comment">% XYZ of BLue minus black</span>
+
+<span class="comment">% Step c</span>
+RedRamp   = RedRamp   / XYZw(2, 1); <span class="comment">% Divide XYZ by (Y) of white</span>
+GreenRamp = GreenRamp / XYZw(2, 1); <span class="comment">% Divide XYZ by (Y) of white</span>
+BlueRamp  = BlueRamp  / XYZw(2, 1); <span class="comment">% Divide XYZ by (Y) of white</span>
+
+<span class="comment">% Clip out of bounds numbers</span>
+RedRamp(RedRamp&lt;0)     = 0; <span class="comment">% Less than 0 becomes 0</span>
+RedRamp(RedRamp&gt;1)     = 1; <span class="comment">% Greater than 1 becomes 1</span>
+GreenRamp(GreenRamp&lt;0) = 0;
+GreenRamp(GreenRamp&gt;1) = 1;
+BlueRamp(BlueRamp&lt;0)   = 0;
+BlueRamp(BlueRamp&gt;1)   = 1;
+
+<span class="comment">% Step d</span>
+<span class="comment">% Estiamte Radiometric Scalars</span>
+m_fwd_inv = pinv(m_fwd(1:3,1:3)); <span class="comment">% Calculate inverse matrix of 3x3 forward matrix</span>
+
+<span class="comment">% The RS means they're converted into RGB, meaning R;G;B [3x11] for 11</span>
+<span class="comment">% patches</span>
+RedRampRS   = m_fwd_inv * RedRamp;   <span class="comment">% Multiply XYZ by inverse forward matrix</span>
+GreenRampRS = m_fwd_inv * GreenRamp; <span class="comment">%</span>
+BlueRampRS  = m_fwd_inv * BlueRamp;  <span class="comment">%</span>
+
+<span class="comment">% Step e</span>
+<span class="comment">% Extract the Red/Green/Blue channels from the RSs of each ramp</span>
+<span class="comment">% I.e. Extract Red RS from RedRamp</span>
+<span class="comment">%      Extract Green RS from GreenRamp</span>
+<span class="comment">%      Extract Blue RS from BlueRamp</span>
+RedRampRS_R = RedRampRS(1,:);     <span class="comment">% Red channel of red</span>
+<span class="comment">%RedRampRS_G = RedRampRS(2,:);</span>
+<span class="comment">%RedRampRS_B = RedRampRS(3,:);</span>
+
+<span class="comment">%GreenRampRS_R = GreenRampRS(1,:);</span>
+GreenRampRS_G = GreenRampRS(2,:); <span class="comment">% Green channel of green</span>
+<span class="comment">%GreenRampRS_B = GreenRampRS(3,:);</span>
+
+<span class="comment">%BlueRampRS_R = BlueRampRS(1,:);</span>
+<span class="comment">%BlueRampRS_G = BlueRampRS(2,:);</span>
+BlueRampRS_B = BlueRampRS(3,:);   <span class="comment">% Blue channel of blue</span>
+
+<span class="comment">% Step f</span>
+<span class="comment">% Interpolate channels from 0-255 using 'pchip'</span>
+ramp_DCs = round(linspace(0,255,11));
+
+<span class="comment">% Create LUT for Red/Green/Blue</span>
+RedLUT_fwd   = interp1(ramp_DCs, RedRampRS_R, 0:1:255, <span class="string">'pchip'</span>);   <span class="comment">% Red LUT forward</span>
+GreenLUT_fwd = interp1(ramp_DCs, GreenRampRS_G, 0:1:255, <span class="string">'pchip'</span>); <span class="comment">% Green LUT forward</span>
+BlueLUT_fwd  = interp1(ramp_DCs, BlueRampRS_B, 0:1:255, <span class="string">'pchip'</span>);  <span class="comment">% Blue LUT forward</span>
+
+<span class="comment">% Plot LUT</span>
+figure
+hold <span class="string">on</span>
+plot(0:255, RedLUT_fwd,  <span class="string">'Color'</span>, [1, 0, 0])
+plot(0:255, GreenLUT_fwd,<span class="string">'Color'</span>, [0, 1, 0])
+plot(0:255, BlueLUT_fwd, <span class="string">'Color'</span>, [0, 0, 1])
+
+xlabel(<span class="string">"Digital Counts RGB 0-255"</span>)
+ylabel(<span class="string">"Radiometrix Scalars RGB 0-1"</span>)
+title(<span class="string">"Forward Model LUTs"</span>)
+ylim([0 1])
+xlim([0 255])
+</pre>
+<img vspace="5" hspace="5" src="Proj6_01.png" alt=""> <h2 id="5">Step 6 - Reverse Model</h2>
+<pre class="codeinput">m_rev = m_fwd_inv
+</pre>
+<pre class="codeoutput">
+m_rev =
+
+    4.1476   -2.3243   -0.5238
+   -1.4787    2.4687   -0.0479
+   -0.0455   -0.1586    1.0174
+
+</pre>
+<h2 id="6">Step 7 - Reverse LUT</h2>
+<pre class="codeinput">RedLUT_rev   = uint8(round(interp1(RedLUT_fwd, 0:255, linspace(0, max(RedLUT_fwd), 1024), <span class="string">'pchip'</span>, 0)));     <span class="comment">% Red LUT reverse</span>
+GreenLUT_rev = uint8(round(interp1(GreenLUT_fwd, 0:255, linspace(0, max(GreenLUT_fwd), 1024), <span class="string">'pchip'</span>, 0))); <span class="comment">% Green LUT reverse</span>
+BlueLUT_rev  = uint8(round(interp1(BlueLUT_fwd, 0:255, linspace(0, max(BlueLUT_fwd), 1024), <span class="string">'pchip'</span>, 0)));   <span class="comment">% Blue LUT reverse</span>
+
+<span class="comment">% Plot</span>
+figure
+hold <span class="string">on</span>
+plot(0:1023, RedLUT_rev,  <span class="string">'Color'</span>, [1, 0, 0])
+plot(0:1023, GreenLUT_rev,<span class="string">'Color'</span>, [0, 1, 0])
+plot(0:1023, BlueLUT_rev, <span class="string">'Color'</span>, [0, 0, 1])
+
+ylabel(<span class="string">"Digital Counts RGB 0-255"</span>)
+xlabel(<span class="string">"Scaled/quantized ratiometric scalars RGB 0-1023"</span>)
+title(<span class="string">"Reverse Model LUTs"</span>)
+ylim([0 255])
+xlim([0 1023])
+</pre>
+<img vspace="5" hspace="5" src="Proj6_02.png" alt=""> <h2 id="7">Step 8 - Final Display Model</h2>
+<pre class="codeinput">XYZw_display = XYZw; <span class="comment">% White of dispaly</span>
+XYZk_display = XYZk; <span class="comment">% Black of display</span>
+M_Display = m_rev;   <span class="comment">% Reverse matrix of dispaly</span>
+RLUT_display = RedLUT_rev;   <span class="comment">% Red LUT reverse model</span>
+GLUT_display = GreenLUT_rev; <span class="comment">% Green LUT reverse model</span>
+BLUT_display = BlueLUT_rev;  <span class="comment">% Blue LUT reverse model</span>
+
+<span class="comment">% Saves the B&amp;W, and Reverse matrix of the display. Saves the R,G,B LUTs of</span>
+<span class="comment">% the reverse model</span>
+save (<span class="string">'display_model.mat'</span>, <span class="string">'XYZw_display'</span>, <span class="string">'XYZk_display'</span>, <span class="string">'M_Display'</span>, <span class="keyword">...</span>
+      <span class="string">'RLUT_display'</span>, <span class="string">'GLUT_display'</span>, <span class="string">'BLUT_display'</span>);
+</pre>
+<h2 id="8">Step 9 - Render RGB image from XYZ</h2>
+<pre class="codeinput">
+<span class="comment">% Step a</span>
+XYZ_D50;
+
+<span class="comment">% Step b - Load in Munki XYZ + Lab</span>
+load(<span class="string">"loadMunkiData.mat"</span>)
+
+<span class="comment">% Step c - Adapt XYZ under D50 -&gt; XYZ under Display's whitepoint</span>
+catXYZ = catBradford(Munki.XYZ, XYZ_D50, XYZw_display);
+
+<span class="comment">% Step d - Subtract the black level</span>
+catXYZ = catXYZ - XYZk_display;
+
+<span class="comment">% Step e - Multiply XYZ by the Display to produce RS</span>
+<span class="comment">%               [3x3]     [3x24]</span>
+munki_CC_RS = M_Display * catXYZ;
+
+<span class="comment">% Step f</span>
+munki_CC_RS = munki_CC_RS/100;
+
+<span class="comment">% Step g</span>
+munki_CC_RS(munki_CC_RS&lt;0) = 0;
+munki_CC_RS(1&lt;munki_CC_RS) = 1;
+
+<span class="comment">% Step h</span>
+munki_CC_RS = round(munki_CC_RS*1023 + 1);
+
+<span class="comment">% Step i</span>
+munki_CC_DC(1,:) = RedLUT_rev(munki_CC_RS(1,:));
+munki_CC_DC(2,:) = GreenLUT_rev(munki_CC_RS(2,:));
+munki_CC_DC(3,:) = BlueLUT_rev(munki_CC_RS(3,:));
+
+<span class="comment">% Step j - Visualize Chart Patches</span>
+pix = uint8(reshape(munki_CC_DC', [6 4 3]));
+pix = fliplr(imrotate(pix, -90));
+figure
+image(pix);
+set(gca, <span class="string">'FontSize'</span>, 12);
+title(<span class="string">"colorchecker rendered from measured XYZs using the display model"</span>)
+</pre>
+<img vspace="5" hspace="5" src="Proj6_03.png" alt=""> <h2 id="9">Step 10 - Evaluate Color Accuracy of Display Model</h2>
+<pre class="codeinput">
+<span class="comment">% Step a - Double cast and rescale to [0-100] range</span>
+munki_CC_DC = uint8( double(munki_CC_DC) * (100/255) );<span class="comment">%Normalize to 1, then x100.</span>
+
+<span class="comment">% Step b - Matrix table4ti1</span>
+table4ti1 = ones(30, 4);
+table4ti1(:, 1) = 1:30;
+table4ti1(1:24, 2:4) = munki_CC_DC';
+table4ti1(25:27, 2:4) = 0;
+table4ti1(28:30, 2:4) = 100;
+
+<span class="comment">% Step c - Write .ti1 file</span>
+write_ti1_file(table4ti1, <span class="string">'disp_model_test.ti1'</span>);
+
+<span class="comment">% Step d - Use da Munki</span>
+<span class="comment">% disp_model_test.ti3 made</span>
+
+<span class="comment">% Step e - Load in XYZ values</span>
+disp_XYZs = importdata(<span class="string">'disp_model_test.ti3'</span>,<span class="string">' '</span>,20);
+
+<span class="comment">% Step f - Extra XYZs and average</span>
+CC_XYZ = disp_XYZs.data(1:24, 5:7);         <span class="comment">% Extract XYZ Color</span>
+display_black = disp_XYZs.data(25:27, 5:7); <span class="comment">% Extract XYZ display black</span>
+display_white = disp_XYZs.data(28:30, 5:7); <span class="comment">% EXtract XYZ display white</span>
+XYZw = mean(display_white); <span class="comment">% XYZ white is average of three measurements</span>
+XYZk = mean(display_black); <span class="comment">% XYZ black is average of three measurements</span>
+CC_XYZ = CC_XYZ';
+XYZw = XYZw';
+
+<span class="comment">% Step g - Calculate Lab from CC patches</span>
+Display_Lab = XYZ2Lab(CC_XYZ, XYZw);
+
+<span class="comment">% Step h - Calculate dEab</span>
+dEab = deltaEab(Display_Lab, Munki.Lab);
+
+<span class="comment">% Step i</span>
+print_display_model_error(Munki.Lab, Display_Lab, dEab);
+</pre>
+<pre class="codeoutput">
+
+Display model color error
+XYZ_real-&gt;display_model-&gt;RGB_disp-&gt;display
+
+	       Real vs. displayed ColorChecker Lab values
+		     real		     displayed
+patch #	     L        a        b        L        a        b       dEab
+      1	  37.1865  14.9985  15.2592  36.8865  14.2261  15.5284   0.8713
+      2	  65.8188  16.8695  18.0267  65.6802  14.8212  18.1930   2.0596
+      3	  49.9949  -3.1841 -23.5159  51.0788  -0.7536 -21.3123   3.4552
+      4	  42.6411 -15.3251  20.0423  42.7415 -17.8604  21.8983   3.1437
+      5	  54.6852   9.6978 -26.7126  55.2683  12.8836 -26.1391   3.2891
+      6	  71.2441 -33.1391  -0.5010  71.3126 -32.6945   1.0255   1.5914
+      7	  62.2558  34.1094  57.7774  61.6009  30.0253  57.6497   4.1383
+      8	  39.5890   9.9980 -43.6388  40.5232  17.0778 -42.7419   7.1972
+      9	  51.8424  48.1403  16.0636  51.4238  46.1820  14.6605   2.4451
+     10	  29.4495  22.4255 -21.7661  30.0405  23.9639 -21.6209   1.6543
+     11	  71.6264 -24.3441  57.6850  71.4577 -30.1075  58.1888   5.7878
+     12	  72.2288  20.6039  69.0149  71.7194  15.9079  67.0791   5.1048
+     13	  28.6402  18.5907 -51.4092  29.8424  25.7203 -48.6971   7.7221
+     14	  54.6309 -39.5493  32.8341  55.0122 -41.1915  34.6212   2.4567
+     15	  42.5988  54.6049  25.7315  42.8231  50.4198  25.3424   4.2092
+     16	  82.4265   3.8689  78.8570  82.3103  -2.5619  76.1660   6.9721
+     17	  51.5476  49.5154 -14.3758  51.2270  50.0912 -14.4897   0.6688
+     18	  49.3892 -26.5473 -28.6645  51.9430 -13.5950 -24.4903  13.8459
+     19	  95.4458  -0.4414   0.0244  96.0094  -0.9179   0.3093   0.7911
+     20	  80.0339   0.1309  -0.9345  80.3975  -0.0666   0.2644   1.2683
+     21	  66.0107  -0.0004  -1.1463  66.4131   0.1474  -0.4507   0.8171
+     22	  50.5546  -0.6207  -0.9616  51.0370  -0.4016  -0.8122   0.5504
+     23	  35.1532  -0.0632  -0.9708  35.8202   0.2682  -0.7166   0.7870
+     24	  20.3224  -0.2858  -0.5603  19.9919   0.0087   0.2874   0.9564
+
+							min      0.5504
+							max     13.8459
+							mean     3.4076
+</pre>
+<h2 id="10">Step 11 - Create Display RGB Function</h2>
+<pre class="codeinput">Display_RGB = XYZ2dispRGB(<span class="string">"display_model.mat"</span>, CC_XYZ, XYZw) ;
+
+<span class="comment">% Reusing Ye' Holy Jim Code</span>
+pix = reshape(Display_RGB', [6 4 3]);
+pix = fliplr(imrotate(pix, -90));
+figure;
+image(pix);
+set(gca, <span class="string">'FontSize'</span>, 12);
+title(<span class="string">"colorchecker rendered from measured XYZs using XYZdispRGB function"</span>);
+</pre>
+<img vspace="5" hspace="5" src="Proj6_04.png" alt=""> <h2 id="11">Display XYZ2RGB function</h2>
+<pre class="language-matlab">
+<span class="keyword">function</span> munki_CC_DC = XYZ2dispRGB(display_model, XYZ, XYZn)
+<span class="comment">% display_model = display_model.mat file</span>
+<span class="comment">% XYZ [3xn]     = XYZ valeus of CC patches</span>
+<span class="comment">% XYZn [3x1]    = Whitepoint / Reference white</span>
+
+load(<span class="string">"display_model"</span>);
+
+<span class="comment">% Step c - Adapt XYZ under D50 -&gt; XYZ under Display's whitepoint</span>
+catXYZ = catBradford(XYZ, XYZn, XYZw_display);
+
+<span class="comment">% Step d - Subtract the black level</span>
+catXYZ = catXYZ - XYZk_display;
+
+<span class="comment">% Step e - Multiply XYZ by the Display to produce RS</span>
+<span class="comment">%               [3x3]     [3x24]    </span>
+munki_CC_RS = M_Display * catXYZ;
+
+<span class="comment">% Step f</span>
+munki_CC_RS = munki_CC_RS/100;
+
+<span class="comment">% Step g</span>
+munki_CC_RS(munki_CC_RS&lt;0) = 0;
+munki_CC_RS(1&lt;munki_CC_RS) = 1;
+
+<span class="comment">% Step h</span>
+munki_CC_RS = round(munki_CC_RS*1023 + 1);
+
+<span class="comment">% Step i</span>
+munki_CC_DC(1,:) = RLUT_display(munki_CC_RS(1,:));
+munki_CC_DC(2,:) = GLUT_display(munki_CC_RS(2,:));
+munki_CC_DC(3,:) = BLUT_display(munki_CC_RS(3,:));
+
+<span class="comment">% Convert to uint8</span>
+uint8(munki_CC_DC);
+<span class="keyword">end</span>
+
+</pre>
+<h2 id="12">Flex write_ti1_file.m</h2>
+<pre class="language-matlab">
+<span class="keyword">function</span> filename = write_ti1_file (table4ti1, filename)
+
+<span class="comment">% Open/Create document</span>
+fid = fopen(filename, <span class="string">'w+'</span>);
+
+<span class="comment">% Create Document</span>
+fprintf(fid, <span class="string">'%s\n\n'</span>, <span class="string">"CTI1"</span>);
+
+fprintf(fid, <span class="string">'%s\n\n'</span>, <span class="string">'COLOR_REP "RGB"'</span>);
+
+fprintf(fid, <span class="string">'%s\n'</span>, <span class="string">"NUMBER_OF_FIELDS 4"</span>);
+fprintf(fid, <span class="string">'%s\n'</span>, <span class="string">"BEGIN_DATA_FORMAT"</span>);
+fprintf(fid, <span class="string">'%s\n'</span>, <span class="string">"SAMPLE_ID RGB_R RGB_G RGB_B"</span>);
+fprintf(fid, <span class="string">'%s\n\n'</span>, <span class="string">"END_DATA_FORMAT"</span>);
+
+fprintf(fid, <span class="string">'%s\n'</span>, <span class="string">"NUMBER_OF_SETS 30"</span>);
+fprintf(fid, <span class="string">'%s\n'</span>, <span class="string">"BEGIN_DATA"</span>);
+
+<span class="keyword">for</span> i = 1:size(table4ti1(:, 1))
+    fprintf(fid, <span class="string">'%i %i %i %i\n'</span> ,table4ti1(i, 1),table4ti1(i, 2),table4ti1(i, 3),table4ti1(i, 4));
+<span class="keyword">end</span>
+
+fprintf(fid, <span class="string">'%s'</span>, <span class="string">"END_DATA"</span>);
+
+fclose(fid);
+<span class="keyword">end</span> <span class="comment">% End function</span>
+
+</pre>
+<h2 id="13">Step 12 - Feedback</h2>
+<p>i) Gian-Mateo failed to realize that uint8 did not in-fact mean "round", but all was resolved in the end. ii) Cooper and Gian-Mateo did the functions, code, and revision/cleanup. iii) Using the ones function to build a matrix iv) Explanation of what Step 9.j is doing.</p>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Credits
+% Team #: 1 |
+% Authors: Cooper White & Gian-Mateo Tifone |
+% Date: 11/28/2023
+
+%% Step 1/2 - initilization 
+clear; 
+
+cie = loadCIEdata;
+XYZ_D50 = ref2XYZ(cie.PRD, cie.cmf2deg, cie.illD50);
+XYZ_D65 = ref2XYZ(cie.PRD, cie.cmf2deg, cie.illD65);
+
+%% Step 3
+load_ramps_data;
+
+%% Step 4 - Forward Matrix
+Red_max.X = max(ramp_R_XYZs(1, :)); %X_r,max
+Red_max.Y = max(ramp_R_XYZs(2, :)); %Y_r,max
+Red_max.Z = max(ramp_R_XYZs(3, :)); %Z_r,max
+
+Green_max.X = max(ramp_G_XYZs(1, :)); %X_g,max
+Green_max.Y = max(ramp_G_XYZs(2, :)); %Y_g,max
+Green_max.Z = max(ramp_G_XYZs(3, :)); %Z_g,max
+
+Blue_max.X = max(ramp_B_XYZs(1, :)); %X_g,max
+Blue_max.Y = max(ramp_B_XYZs(2, :)); %Y_g,max
+Blue_max.Z = max(ramp_B_XYZs(3, :)); %Z_g,max
+
+% Create matrix of max
+m_fwd = [Red_max.X, Green_max.X, Blue_max.X ;
+         Red_max.Y, Green_max.Y, Blue_max.Y ;
+         Red_max.Z, Green_max.Z, Blue_max.Z];
+
+% Subtract the XYZ of display (XYZk)
+m_fwd = m_fwd-XYZk;
+
+% Add XYZk (black) collumn
+m_fwd = cat(2, m_fwd, XYZk);
+
+% Divide the XYZw value (Y)
+m_fwd = m_fwd / XYZw(2, 1);
+
+% Display Matrix
+m_fwd
+
+%% Step 5 - Derive the LUTs
+
+% Step a/b
+RedRamp =   ramp_R_XYZs - XYZk; % XYZ of Red minus black 
+GreenRamp = ramp_G_XYZs - XYZk; % XYZ of Green minus black 
+BlueRamp =  ramp_B_XYZs - XYZk; % XYZ of BLue minus black 
+
+% Step c
+RedRamp   = RedRamp   / XYZw(2, 1); % Divide XYZ by (Y) of white
+GreenRamp = GreenRamp / XYZw(2, 1); % Divide XYZ by (Y) of white
+BlueRamp  = BlueRamp  / XYZw(2, 1); % Divide XYZ by (Y) of white
+
+% Clip out of bounds numbers
+RedRamp(RedRamp<0)     = 0; % Less than 0 becomes 0
+RedRamp(RedRamp>1)     = 1; % Greater than 1 becomes 1
+GreenRamp(GreenRamp<0) = 0;
+GreenRamp(GreenRamp>1) = 1;
+BlueRamp(BlueRamp<0)   = 0;
+BlueRamp(BlueRamp>1)   = 1;
+
+% Step d
+% Estiamte Radiometric Scalars
+m_fwd_inv = pinv(m_fwd(1:3,1:3)); % Calculate inverse matrix of 3x3 forward matrix
+
+% The RS means they're converted into RGB, meaning R;G;B [3x11] for 11
+% patches
+RedRampRS   = m_fwd_inv * RedRamp;   % Multiply XYZ by inverse forward matrix
+GreenRampRS = m_fwd_inv * GreenRamp; % 
+BlueRampRS  = m_fwd_inv * BlueRamp;  % 
+
+% Step e
+% Extract the Red/Green/Blue channels from the RSs of each ramp
+% I.e. Extract Red RS from RedRamp
+%      Extract Green RS from GreenRamp
+%      Extract Blue RS from BlueRamp
+RedRampRS_R = RedRampRS(1,:);     % Red channel of red
+%RedRampRS_G = RedRampRS(2,:);
+%RedRampRS_B = RedRampRS(3,:);
+
+%GreenRampRS_R = GreenRampRS(1,:);
+GreenRampRS_G = GreenRampRS(2,:); % Green channel of green
+%GreenRampRS_B = GreenRampRS(3,:);
+
+%BlueRampRS_R = BlueRampRS(1,:);
+%BlueRampRS_G = BlueRampRS(2,:);
+BlueRampRS_B = BlueRampRS(3,:);   % Blue channel of blue
+
+% Step f
+% Interpolate channels from 0-255 using 'pchip'
+ramp_DCs = round(linspace(0,255,11));
+
+% Create LUT for Red/Green/Blue
+RedLUT_fwd   = interp1(ramp_DCs, RedRampRS_R, 0:1:255, 'pchip');   % Red LUT forward
+GreenLUT_fwd = interp1(ramp_DCs, GreenRampRS_G, 0:1:255, 'pchip'); % Green LUT forward
+BlueLUT_fwd  = interp1(ramp_DCs, BlueRampRS_B, 0:1:255, 'pchip');  % Blue LUT forward
+
+% Plot LUT
+figure
+hold on
+plot(0:255, RedLUT_fwd,  'Color', [1, 0, 0])
+plot(0:255, GreenLUT_fwd,'Color', [0, 1, 0])
+plot(0:255, BlueLUT_fwd, 'Color', [0, 0, 1])
+
+xlabel("Digital Counts RGB 0-255")
+ylabel("Radiometrix Scalars RGB 0-1")
+title("Forward Model LUTs")
+ylim([0 1])
+xlim([0 255])
+
+%% Step 6 - Reverse Model
+m_rev = m_fwd_inv
+
+%% Step 7 - Reverse LUT
+RedLUT_rev   = uint8(round(interp1(RedLUT_fwd, 0:255, linspace(0, max(RedLUT_fwd), 1024), 'pchip', 0)));     % Red LUT reverse
+GreenLUT_rev = uint8(round(interp1(GreenLUT_fwd, 0:255, linspace(0, max(GreenLUT_fwd), 1024), 'pchip', 0))); % Green LUT reverse
+BlueLUT_rev  = uint8(round(interp1(BlueLUT_fwd, 0:255, linspace(0, max(BlueLUT_fwd), 1024), 'pchip', 0)));   % Blue LUT reverse
+
+% Plot
+figure
+hold on
+plot(0:1023, RedLUT_rev,  'Color', [1, 0, 0])
+plot(0:1023, GreenLUT_rev,'Color', [0, 1, 0])
+plot(0:1023, BlueLUT_rev, 'Color', [0, 0, 1])
+
+ylabel("Digital Counts RGB 0-255")
+xlabel("Scaled/quantized ratiometric scalars RGB 0-1023")
+title("Reverse Model LUTs")
+ylim([0 255])
+xlim([0 1023])
+
+%% Step 8 - Final Display Model
+XYZw_display = XYZw; % White of dispaly
+XYZk_display = XYZk; % Black of display
+M_Display = m_rev;   % Reverse matrix of dispaly
+RLUT_display = RedLUT_rev;   % Red LUT reverse model
+GLUT_display = GreenLUT_rev; % Green LUT reverse model
+BLUT_display = BlueLUT_rev;  % Blue LUT reverse model
+
+% Saves the B&W, and Reverse matrix of the display. Saves the R,G,B LUTs of
+% the reverse model
+save ('display_model.mat', 'XYZw_display', 'XYZk_display', 'M_Display', ...
+      'RLUT_display', 'GLUT_display', 'BLUT_display');
+
+%% Step 9 - Render RGB image from XYZ
+
+% Step a
+XYZ_D50;
+
+% Step b - Load in Munki XYZ + Lab
+load("loadMunkiData.mat")
+
+% Step c - Adapt XYZ under D50 -> XYZ under Display's whitepoint
+catXYZ = catBradford(Munki.XYZ, XYZ_D50, XYZw_display);
+
+% Step d - Subtract the black level
+catXYZ = catXYZ - XYZk_display;
+
+% Step e - Multiply XYZ by the Display to produce RS
+%               [3x3]     [3x24]    
+munki_CC_RS = M_Display * catXYZ;
+
+% Step f
+munki_CC_RS = munki_CC_RS/100;
+
+% Step g
+munki_CC_RS(munki_CC_RS<0) = 0;
+munki_CC_RS(1<munki_CC_RS) = 1;
+
+% Step h
+munki_CC_RS = round(munki_CC_RS*1023 + 1);
+
+% Step i
+munki_CC_DC(1,:) = RedLUT_rev(munki_CC_RS(1,:));
+munki_CC_DC(2,:) = GreenLUT_rev(munki_CC_RS(2,:));
+munki_CC_DC(3,:) = BlueLUT_rev(munki_CC_RS(3,:));
+
+% Step j - Visualize Chart Patches
+pix = uint8(reshape(munki_CC_DC', [6 4 3]));
+pix = fliplr(imrotate(pix, -90));
+figure
+image(pix);
+set(gca, 'FontSize', 12);
+title("colorchecker rendered from measured XYZs using the display model")
+
+%% Step 10 - Evaluate Color Accuracy of Display Model
+
+% Step a - Double cast and rescale to [0-100] range
+munki_CC_DC = uint8( double(munki_CC_DC) * (100/255) );%Normalize to 1, then x100.
+
+% Step b - Matrix table4ti1
+table4ti1 = ones(30, 4);
+table4ti1(:, 1) = 1:30;
+table4ti1(1:24, 2:4) = munki_CC_DC';
+table4ti1(25:27, 2:4) = 0;
+table4ti1(28:30, 2:4) = 100;
+
+% Step c - Write .ti1 file
+write_ti1_file(table4ti1, 'disp_model_test.ti1');
+
+% Step d - Use da Munki
+% disp_model_test.ti3 made
+
+% Step e - Load in XYZ values
+disp_XYZs = importdata('disp_model_test.ti3',' ',20);
+
+% Step f - Extra XYZs and average
+CC_XYZ = disp_XYZs.data(1:24, 5:7);         % Extract XYZ Color
+display_black = disp_XYZs.data(25:27, 5:7); % Extract XYZ display black
+display_white = disp_XYZs.data(28:30, 5:7); % EXtract XYZ display white
+XYZw = mean(display_white); % XYZ white is average of three measurements
+XYZk = mean(display_black); % XYZ black is average of three measurements
+CC_XYZ = CC_XYZ';
+XYZw = XYZw';
+
+% Step g - Calculate Lab from CC patches
+Display_Lab = XYZ2Lab(CC_XYZ, XYZw);
+
+% Step h - Calculate dEab
+dEab = deltaEab(Display_Lab, Munki.Lab);
+
+% Step i
+print_display_model_error(Munki.Lab, Display_Lab, dEab);
+
+%% Step 11 - Create Display RGB Function
+Display_RGB = XYZ2dispRGB("display_model.mat", CC_XYZ, XYZw) ;
+
+% Reusing Ye' Holy Jim Code
+pix = reshape(Display_RGB', [6 4 3]);
+pix = fliplr(imrotate(pix, -90));
+figure;
+image(pix);
+set(gca, 'FontSize', 12);
+title("colorchecker rendered from measured XYZs using XYZdispRGB function");
+
+%% Display XYZ2RGB function
+% <include>XYZ2dispRGB.m</include>
+
+%% Flex write_ti1_file.m
+% <include>write_ti1_file.m</include>
+
+%% Step 12 - Feedback
+% i) Gian-Mateo failed to realize that uint8 did not in-fact mean "round", 
+% but all was resolved in the end. 
+% ii) Cooper and Gian-Mateo did the functions, code, and revision/cleanup.
+% iii) Using the ones function to build a matrix
+% iv) Explanation of what Step 9.j is doing.
+
+##### SOURCE END #####
+-->
+</body>
+</html>

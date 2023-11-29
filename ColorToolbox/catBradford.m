@@ -1,4 +1,4 @@
-function [XYZ2] = catBradford(XYZ1, XYZn1, XYZn2);
+function [XYZ2] = catBradford(XYZ1, XYZn1, XYZn2)
 % use the Bradford form of the CIECAT02 chromatic adaptation matrix to convert XYZs calculated 
 % using illuminant (XYZn1) to their equivalents w.r.t. illuminant (XYZn2)
 % tweaked from original cat02.m, 3/14/15 jaf
