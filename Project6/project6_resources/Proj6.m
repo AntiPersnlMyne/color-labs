@@ -1,7 +1,7 @@
 %% Credits
 % Team #: 1 |
 % Authors: Cooper White & Gian-Mateo Tifone |
-% Date: 11/02/2023
+% Date: 11/28/2023
 
 %% Step 1/2 - initilization 
 clear; 
@@ -202,14 +202,50 @@ table4ti1(28:30, 2:4) = 100;
 % Step c - Write .ti1 file
 write_ti1_file(table4ti1, 'disp_model_test.ti1');
 
+% Step d - Use da Munki
+% disp_model_test.ti3 made
 
-% Step d 
+% Step e - Load in XYZ values
+disp_XYZs = importdata('disp_model_test.ti3',' ',20);
 
+% Step f - Extra XYZs and average
+CC_XYZ = disp_XYZs.data(1:24, 5:7);         % Extract XYZ Color
+display_black = disp_XYZs.data(25:27, 5:7); % Extract XYZ display black
+display_white = disp_XYZs.data(28:30, 5:7); % EXtract XYZ display white
+XYZw = mean(display_white); % XYZ white is average of three measurements
+XYZk = mean(display_black); % XYZ black is average of three measurements
+CC_XYZ = CC_XYZ';
+XYZw = XYZw';
 
+% Step g - Calculate Lab from CC patches
+Display_Lab = XYZ2Lab(CC_XYZ, XYZw);
 
+% Step h - Calculate dEab
+dEab = deltaEab(Display_Lab, Munki.Lab);
 
+% Step i
+print_display_model_error(Munki.Lab, Display_Lab, dEab);
 
+%% Step 11 - Create Display RGB Function
+Display_RGB = XYZ2dispRGB("display_model.mat", CC_XYZ, XYZw) ;
 
+% Reusing Ye' Holy Jim Code
+pix = reshape(Display_RGB', [6 4 3]);
+pix = fliplr(imrotate(pix, -90));
+figure;
+image(pix);
+set(gca, 'FontSize', 12);
+title("colorchecker rendered from measured XYZs using XYZdispRGB function");
 
+%% Display XYZ2RGB function
+% <include>XYZ2dispRGB.m</include>
 
+%% Flex write_ti1_file.m
+% <include>write_ti1_file.m</include>
 
+%% Step 12 - Feedback
+% i) Gian-Mateo failed to realize that uint8 did not in-fact mean "round", 
+% but all was resolved in the end. 
+% ii) Cooper and Gian-Mateo did the functions, code, and revision/cleanup.
+% iii) Using the ones function to build a matrix
+% iv) Explanation of what Step 9.j is doing.
