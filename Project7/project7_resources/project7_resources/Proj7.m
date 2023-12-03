@@ -25,9 +25,13 @@ table4ti1(25:27, 2:4) = 0;
 table4ti1(28:30, 2:4) = 100;
 
 %d) made workflow_test_uncal.ti1
+
 %e) used ColorMunki and made workflow_uncal_test.ti3
-%f) create data structure that contains the displayed XYZs
+
+%f) Extratcing data structure that contains the displayed XYZs
 uncal_XYZs = importdata('workflow_test_uncal.ti3',' ',20);
+
+%g) Creating data structure for XYZ data of displayed CC Patches
 uncal_CC.XYZ = uncal_XYZs.data(1:24,5:7);
 uncal_CC.XYZw = mean(uncal_XYZs.data(25:27,5:7));
 uncal_CC.XYZk = mean(uncal_XYZs.data(28:30,5:7));
