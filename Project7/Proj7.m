@@ -12,10 +12,10 @@ disp("Certifiable Jim Moment", newline)
 cie = loadCIEdata;
 Camera.RGBNorm = importdata('CameraRGB.txt',' '); % Read in RGBs of CC image [3x24] [R;G;B]
 % RGB's were calculated as averaged over a span of 255, meaning they're imported
-% normalized to 255
+% normalized to 255 [RGB/255 built in]
 
 %b)
-Camera.RGBNorm = double(Camera.RGBNorm) * 100/255; % Turn to double, divide by 255, multiply 100
+Camera.RGBNorm = Camera.RGBNorm * 100; % Turn to double, divide by 255, multiply 100
 Camera.RGBNorm = uint8(Camera.RGBNorm); % convert back to uint8
 
 %c) Creating the table4ti1 matrix
@@ -30,6 +30,7 @@ table4ti1(28:30, 2:4) = 100;
 %f) create data structure that contains the displayed XYZs
 %g) Extract XYZ, whitepoint, blackpoint
 uncal_XYZs = importdata('workflow_test_uncal.ti3',' ',20);
+
 uncal_CC.XYZ = uncal_XYZs.data(1:24,5:7);          % Extract XYZs of color
 uncal_CC.XYZw = mean(uncal_XYZs.data(25:27,5:7));  % Extract Whitepoint
 uncal_CC.XYZk = mean(uncal_XYZs.data(28:30,5:7));  % Extract Blackpoitn
