@@ -114,18 +114,15 @@ print_calibrated_workflow_error(Munki.Lab, cal_CC.Lab, dEabLab)
 %Munki.RGB = applycform(xyz2rgb_form, Munki.XYZ)
 % ~
 % This is what the documentation says to use instead
-Munki.RGB = xyz2rgb(Munki.XYZ'); % Default is sRGB
+Munki.RGB = xyz2rgb(Munk)
+Munki.RGB = XYZ2sRGB(Munki.XYZ);
 
 %c)
 Munki.RGB = uint8(Munki.RGB * 255);
 % RGBs are given 0-1 by the function
 
 %d) Create workflow diffs
-workflow = ones(8, 12, 3); %Create empty matrix to modify
-% Uncalibrated: Camera.RGB
-% Calibrated: CalCamera.RGB_DC
-% Ground-truth: Munki.RGB
-
+ones(8, 12, 3) %Create empty matrix to modify
 
 
 
