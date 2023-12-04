@@ -32,8 +32,8 @@ table4ti1(28:30, 2:4) = 100;
 uncal_XYZs = importdata('workflow_test_uncal.ti3',' ',20);
 
 uncal_CC.XYZ = uncal_XYZs.data(1:24,5:7);          % Extract XYZs of color
-uncal_CC.XYZw = mean(uncal_XYZs.data(25:27,5:7));  % Extract Whitepoint
-uncal_CC.XYZk = mean(uncal_XYZs.data(28:30,5:7));  % Extract Blackpoitn
+uncal_CC.XYZk = mean(uncal_XYZs.data(25:27,5:7));  % Extract Whitepoint
+uncal_CC.XYZw = mean(uncal_XYZs.data(28:30,5:7));  % Extract Blackpoint
 
 %h) Calculate Lab values
 uncal_CC.Lab = XYZ2Lab(uncal_CC.XYZ', uncal_CC.XYZw');
@@ -47,7 +47,23 @@ dEabLab = deltaEab(Munki.Lab, uncal_CC.Lab);
 %k) Print differences
 print_uncalibrated_workflow_error(Munki.Lab, uncal_CC.Lab, dEabLab)
 
+%% Step 2 - Calibrated Workflow
+
+%a) CamRGB.Norm
+%b) Put our CamRGB thru RGB2XYZ 
+CalCamera.XYZ = camRGB2XYZ('cam_model.mat', double(Camera.RGBNorm));
+
+%c)
+CalCamera.XYZn_D50 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD50);
+CalCamera.RGBdcs = XYZ2dispRGB('display_model.mat',Camera.XYZ,Camera.XYZn_D50);
+
+%d)
+CalCamera.RGBNorm = double(Camera.RGBdcs*(100/255));
+CalCamera.RGBNorm = uint8(Camera.RGBsilly);
 
 
 
+
+
+    
 
