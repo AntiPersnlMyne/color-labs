@@ -10,6 +10,7 @@ disp("Certifiable Jim Moment", newline)
 %% Step 2 - Import Camera Data
 %a)
 cie = loadCIEdata;
+load('display_model.mat')
 Camera.RGB = importdata('CameraRGB.txt',' '); % Read in RGBs of CC image [3x24] [R;G;B]
 % RGB's were calculated as averaged over a span of 255, meaning they're imported
 % normalized to 255 [RGB/255 built in]
@@ -56,6 +57,7 @@ Camera.RGB;
 CalCamera.XYZ = camRGB2XYZ('cam_model.mat', Camera.RGB);
 
 %c) 
+%CalCamera.XYZn_D50 = catBradford(CalCamera.XYZ, XYZw, cie.illD50);
 CalCamera.XYZn_D50 = ref2XYZ(cie.PRD,cie.cmf2deg,cie.illD50);
 CalCamera.RGB_DC = XYZ2dispRGB('display_model.mat',CalCamera.XYZ,CalCamera.XYZn_D50);
 
@@ -107,14 +109,7 @@ print_calibrated_workflow_error(Munki.Lab, cal_CC.Lab, dEabLab)
 %load("loadMunkiData");
 
 %b) Use "cform" to calculate RGB from XYZ
-% ~
-% This is what I WOULD use, but seemingly 'xyz2srgb' no longer exists in
-% MATLAB R2023b. I'd love to be proven wrong.
-%xyz2rgb_form = makecform('xyz2srgb');
-%Munki.RGB = applycform(xyz2rgb_form, Munki.XYZ)
-% ~
-% This is what the documentation says to use instead
-Munki.RGB = xyz2rgb(Munki.XYZ'); % Default is sRGB
+Munki.RGB = applycform(Munki.XYZ', makecform('XYZ2sRGB', 'AdaptedWhitePoint', CalCamera.XYZn_D50'));
 
 %c)
 Munki.RGB = uint8(Munki.RGB * 255)';
@@ -144,5 +139,30 @@ workflow(2:2:8, 2:2:12, :) = Calibrated;
 
 % Show image
 figure
-image(workflow)
+workflow_image = image(workflow)
+
+%e)
+workflow_image = imresize(workflow, [768 1024], 'nearest');
+
+%f) 
+imwrite(workflow_image, "sillychart.jpg")
+
+
+%% Step 4 
+% load your original CC image
+img_orig = imread("ColorChecker.jpg");
+% reshape the image into a pixel vector
+[r,c,p] = size(img_orig);
+pix_orig = reshape(img_orig,[r*c,p])';
+% process the pixels through your camRGB2XYZ and
+% XYZ2dispRGB functions to calc color-calibrated
+% DCs
+pix_XYZ = camRGB2XYZ('cam_model.mat', double(pix_orig));
+pix_DCs_calib = XYZ2dispRGB('display_model.mat', pix_XYZ, XYZw_display);
+% reshape the pixels back into an image
+img_calib = reshape(pix_DCs_calib', [r,c,p]);
+
+%b)
+imwrite(img_calib, "DaColourChecker.png")
+
 
