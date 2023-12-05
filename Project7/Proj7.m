@@ -1,7 +1,7 @@
 %% Credits
 % Team #: 1 |
 % Authors: Cooper White & Gian-Mateo Tifone |
-% Date: 12/xx/2023
+% Date: 12/05/2023
 
 %% Step 1 - Initialize
 clear
@@ -12,11 +12,12 @@ disp("Certifiable Jim Moment", newline)
 cie = loadCIEdata;
 load('display_model.mat')
 Camera.RGB = importdata('CameraRGB.txt',' '); % Read in RGBs of CC image [3x24] [R;G;B]
+Camera.RGB = uint8(Camera.RGB*255);
 % RGB's were calculated as averaged over a span of 255, meaning they're imported
 % normalized to 255 [RGB/255 built in]
 
 %b)
-Camera.RGBNorm = Camera.RGB * 100; % Turn to double, divide by 255, multiply 100
+Camera.RGBNorm = double(Camera.RGB) * 100/255; % Turn to double, divide by 255, multiply 100
 Camera.RGBNorm = uint8(Camera.RGBNorm); % convert back to uint8
 
 %c) Creating the table4ti1 matrix
@@ -76,9 +77,6 @@ table4ti1(28:30, 2:4) = 100;
 %f) Make "workflow_test_cal.ti1
 
 %g) Use colormunki - dispread -P 1,0,2 -v workflow_test_cal
-% ~ ~ ~ ~ ~ ~ ~ ~
-% PLEASE DO THIS, I DONT HAVE YOUR DISPLAY
-% ~ ~ ~ ~ ~ ~ ~ ~ 
 
 %h) Load the measured XYZs
 cal_XYZs = importdata('workflow_test_cal.ti3',' ',20);
@@ -121,7 +119,7 @@ Munki.RGB = uint8(Munki.RGB * 255)';
 % Ground-truth: Munki.RGB
 
 G_truth = flip ( imrotate( reshape(Munki.RGB', [6 4 3]), 90 ) );
-Uncalibrated = uint8 ( flip ( imrotate( reshape(Camera.RGB', [6 4 3]), 90 ) ) * 255 );
+Uncalibrated = uint8 ( flip ( imrotate( reshape(Camera.RGB', [6 4 3]), 90 ) ) );
 Calibrated = flip ( imrotate( reshape(CalCamera.RGB_DC', [6 4 3]), 90 ) );
 
 % Array to reform - Convert to uint8 to be read 0-255
@@ -148,21 +146,39 @@ workflow_image = imresize(workflow, [768 1024], 'nearest');
 imwrite(workflow_image, "sillychart.jpg")
 
 
-%% Step 4 
+%% Step 4 - Color Accurate Imaging
 % load your original CC image
 img_orig = imread("ColorChecker.jpg");
 % reshape the image into a pixel vector
 [r,c,p] = size(img_orig);
 pix_orig = reshape(img_orig,[r*c,p])';
+
 % process the pixels through your camRGB2XYZ and
 % XYZ2dispRGB functions to calc color-calibrated
 % DCs
-pix_XYZ = camRGB2XYZ('cam_model.mat', double(pix_orig));
-pix_DCs_calib = XYZ2dispRGB('display_model.mat', pix_XYZ, XYZw_display);
+pix_XYZ = camRGB2XYZ('cam_model.mat', pix_orig);
+pix_DCs_calib = XYZ2dispRGB('display_model.mat', pix_XYZ, CalCamera.XYZn_D50);
+
 % reshape the pixels back into an image
 img_calib = reshape(pix_DCs_calib', [r,c,p]);
 
 %b)
-imwrite(img_calib, "DaColourChecker.png")
+imwrite(img_calib, "DaColourChecker.png");
+
+%c)
+figure
+imshow("ColorChecker.jpg")
+figure
+imshow("DaColourChecker.png")
 
 
+%% Step 5 - Feedback
+%i)
+% Cooper & Gian-Mateo both worked on the project. Cooper wrote step 2,
+% Gian-Mateo wrote step 3, the remainder was written together
+%ii)
+% Spatial reasoning matrices
+%iii)
+% Combining parts of a larger array with a smaller one / catination
+%iv)
+% It was alright, no improvements.

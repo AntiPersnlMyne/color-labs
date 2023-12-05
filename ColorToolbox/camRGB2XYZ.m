@@ -12,6 +12,8 @@ function camXYZ = camRGB2XYZ(camModel, camRGB)
 % Import .mat variables
 load(camModel)
 
+camRGB = double(camRGB) / 255;
+
 % Calculate Radiometric Scalars
 r=1;g=2;b=3;
 Camera_RS(r,:) = polyval(CameraPolys(r,:), camRGB(r, :)); % All Patches -Red
