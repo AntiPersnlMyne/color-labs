@@ -117,16 +117,32 @@ print_calibrated_workflow_error(Munki.Lab, cal_CC.Lab, dEabLab)
 Munki.RGB = xyz2rgb(Munki.XYZ'); % Default is sRGB
 
 %c)
-Munki.RGB = uint8(Munki.RGB * 255);
+Munki.RGB = uint8(Munki.RGB * 255)';
 % RGBs are given 0-1 by the function
 
 %d) Create workflow diffs
-workflow = ones(8, 12, 3); %Create empty matrix to modify
 % Uncalibrated: Camera.RGB
 % Calibrated: CalCamera.RGB_DC
 % Ground-truth: Munki.RGB
 
+G_truth = flip ( imrotate( reshape(Munki.RGB', [6 4 3]), 90 ) );
+Uncalibrated = uint8 ( flip ( imrotate( reshape(Camera.RGB', [6 4 3]), 90 ) ) * 255 );
+Calibrated = flip ( imrotate( reshape(CalCamera.RGB_DC', [6 4 3]), 90 ) );
 
+% Array to reform - Convert to uint8 to be read 0-255
+workflow = uint8(ones(8, 12, 3));
 
+% Ground Truth
+workflow(1:2:7, 1:2:11, :) = G_truth;
+workflow(1:2:7, 2:2:12, :) = G_truth;
 
+% Uncalibrated
+workflow(2:2:8, 1:2:11, :) = Uncalibrated;
+
+% Calibrated
+workflow(2:2:8, 2:2:12, :) = Calibrated;
+
+% Show image
+figure
+image(workflow)
 
